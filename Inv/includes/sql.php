@@ -362,4 +362,27 @@ function  monthlySales($year){
   return find_by_sql($sql);
 }
 
+/*--------------------------------------------------------------*/
+/* get productos
+/*--------------------------------------------------------------*/
+  function get_productos(){
+    global $db;
+    $sql = "SELECT 
+                p.id,
+                p.name,
+                p.quantity,
+                p.buy_price,
+                p.sale_price,
+                p.categorie_id,
+                m.file_name,
+                p.date,
+                p.description,
+                p.prom
+            FROM
+                products p
+                    INNER JOIN
+                media m ON m.id = p.media_id limit 10";
+    return find_by_sql($sql);
+  }
+
 ?>
