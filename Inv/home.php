@@ -2,16 +2,23 @@
   $page_title = 'Home Page';
   require_once('includes/load.php');
   if (!$session->isUserLoggedIn(true)) { redirect('index.php', false);}
+
+  $get_productos = get_productos();
+  print_r($get_productos);
 ?>
 <?php include_once('layouts/header.php'); ?>
 <div class="row">
   <div class="col-md-12">
     <?php echo display_msg($msg); ?>
   </div>
- <div class="col-md-12">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+ <!-- Agrega esto en la sección head de tu HTML -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+  <div class="col-md-12">
     <div class="panel">
-      <div class="jumbotron text-center">
-        <div class="col-md-12">
+      <div class="jumbotron text-center container">
+        <div class="col-md-12 my-2">
             <!--  un slider con 3 imagenes -->
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -42,25 +49,25 @@
                     <div class="row">
                       <div class="col-md-3">
                         <div class="card">
-                          <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/0ee69943-78ae-4925-a2ab-e6fc2862ec8d___c832d5a1e09ed00a6df0bcc999e33f31.png" alt="Producto 1">
+                          <img class="card-img-top" style="cursor: pointer;" onclick="mostrarAlerta()" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/0ee69943-78ae-4925-a2ab-e6fc2862ec8d___c832d5a1e09ed00a6df0bcc999e33f31.png" alt="Producto 1">
                          
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="card">
-                          <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/8b20f1e5-187a-41cf-849d-18b41ff44965___23beac91d7a98a6b104d53ff5da40775.png" alt="Producto 2">
+                          <img class="card-img-top" style="cursor: pointer;" onclick="mostrarAlerta()" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/8b20f1e5-187a-41cf-849d-18b41ff44965___23beac91d7a98a6b104d53ff5da40775.png" alt="Producto 2">
                         
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="card">
-                          <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/449ef48b-aacc-4b99-a5c4-4959dc44607b___f18bc7ee07722c0db1133ff365fdd28f.png" alt="Producto 3">
+                          <img class="card-img-top" style="cursor: pointer;" onclick="mostrarAlerta()" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/449ef48b-aacc-4b99-a5c4-4959dc44607b___f18bc7ee07722c0db1133ff365fdd28f.png" alt="Producto 3">
                           
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="card">
-                          <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/f8e024c1-cc86-4874-89af-7dbbb589b269___83e22138784bf9a8d7dd1168396136d3.png" alt="Producto 4">
+                          <img class="card-img-top" style="cursor: pointer;" onclick="mostrarAlerta()" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/f8e024c1-cc86-4874-89af-7dbbb589b269___83e22138784bf9a8d7dd1168396136d3.png" alt="Producto 4">
                         </div>
                       </div>
                     </div>
@@ -69,26 +76,24 @@
                     <div class="row">
                       <div class="col-md-3">
                         <div class="card">
-                          <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/5c617aa4-0af5-48af-aa90-b1fd0a833873___c7456ea71f1a3d10b910342c756d92f9.png" alt="Producto 5">
+                          <img class="card-img-top" style="cursor: pointer;" onclick="mostrarAlerta()" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/5c617aa4-0af5-48af-aa90-b1fd0a833873___c7456ea71f1a3d10b910342c756d92f9.png" alt="Producto 5">
                          
                         </div>
                       </div>
                       <div class="col-md-3">
                         <div class="card">
-                          <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/797a392e-e2e6-4581-9075-2bb5ed26afad___485c66df222b070b6914645be16ff183.png" alt="Producto 6">
+                          <img class="card-img-top" style="cursor: pointer;" onclick="mostrarAlerta()" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/797a392e-e2e6-4581-9075-2bb5ed26afad___485c66df222b070b6914645be16ff183.png" alt="Producto 6">
                          
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="card">
-                      <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/895646e7-faad-4cee-8599-6d449446df1b___533070b2ea3c4dbb0dd526fc61675169.png" alt="Producto 7">
-                      
+                      <img class="card-img-top" style="cursor: pointer;" onclick="mostrarAlerta()" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/895646e7-faad-4cee-8599-6d449446df1b___533070b2ea3c4dbb0dd526fc61675169.png" alt="Producto 7">
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="card">
-                      <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/cc51af92-c666-4075-ad14-b145caffa794___20254592b77fac3e49df6dcfb98375c7.png" alt="Producto 8">
-                     
+                      <img class="card-img-top" style="cursor: pointer;" onclick="mostrarAlerta()" src="https://jumbocolombiaio.vtexassets.com/assets/vtex.file-manager-graphql/images/cc51af92-c666-4075-ad14-b145caffa794___20254592b77fac3e49df6dcfb98375c7.png" alt="Producto 8">
                     </div>
                   </div>
                 </div>
@@ -110,57 +115,49 @@
         <div class="col-md-12 my-2">
             <!--  10 card para mostratrar productos -->
             <div class="row">
-                <div class="col-md-3 ">
+              
+                <!-- un forear con los osguientes elemetos id, name, quantity, buy_price, sale_price, categorie_id, file_name, date, description, prom --> 
+            <?php foreach ($get_productos as $data):?>
+
+              <div class="col-md-3 ">
                     <div class="card">
-                        <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/arquivos/ids/195956-300-300?v=1768083908&width=300&height=300&aspect=true" alt="Producto 1">
+                        <img class="card-img-top"  src="image/png/<?php echo $data['file_name'] ?>" alt="Producto 1">
                         <div class="card-body">
-                            <h5 class="card-title">Huevos AA rojos Nápoles x30und</h5>
-                            <p class="card-text">Descripción del producto 1.</p>
-                            <p class="card-text">Precio original: $50. Precio en oferta: $30.</p>
-                            <a href="#" class="btn btn-primary">Comprar</a>
+                            <h5 class="card-title"><?php echo $data['name'] ?></h5>
+                            <p class="card-text"><?php echo $data['description'] ?></p>
+                            <p class="card-text">$<?php echo $data['sale_price'] ?></p>
+                            <a href="#" class="btn btn-primary" onclick="mostrarAlertaBoton()">Comprar</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/arquivos/ids/215964-300-300?v=1768084870&width=300&height=300&aspect=true" alt="Producto 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Salsa tomate Bary x1000g</h5>
-                            <p class="card-text">Descripción del producto 1.</p>
-                            <p class="card-text">Precio original: $50. Precio en oferta: $30.</p>
-                            <a href="#" class="btn btn-primary">Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/arquivos/ids/186126-1600-1600?v=637813981180700000&width=1600&height=1600&aspect=true" alt="Producto 1">
-                        <div class="card-body">
-                            <h5 class="card-title">pasta Clásica Spaghetti Doria x 1000 g.</h5>
-                            <p class="card-text">Descripción del producto 1.</p>
-                            <p class="card-text">Precio original: $50. Precio en oferta: $30.</p>
-                            <a href="#" class="btn btn-primary">Comprar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img class="card-img-top" src="https://jumbocolombiaio.vtexassets.com/arquivos/ids/195766-300-300?v=1768091953&width=300&height=300&aspect=true" alt="Producto 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Salchicha Ranchera x14und x480g</h5>
-                            <p class="card-text">Descripción del producto 1.</p>
-                            <p class="card-text">Precio original: $50. Precio en oferta: $30.</p>
-                            <a href="#" class="btn btn-primary">Comprar</a>
-                        </div>
-                    </div>
-                </div>
+            <?php endforeach;?>
+
+                
             </div>
             
         </div>
       </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-     
-      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+      <script>
+        function mostrarAlerta() {
+            // Mostrar la alerta con SweetAlert
+            Swal.fire({
+                icon: 'warning',
+                title: 'No hay de esa categorías en bodega'
+            });
+        }
+        function mostrarAlertaBoton() {
+            // Mostrar la alerta con SweetAlert
+            Swal.fire({
+                icon: 'success',
+                title: 'Producto agregado al carrito'
+            });
+        }
+      </script>
+    </div>
     </div>
  </div>
 </div>

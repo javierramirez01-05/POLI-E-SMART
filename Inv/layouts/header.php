@@ -16,8 +16,8 @@
   </head>
   <body>
   <?php  if ($session->isUserLoggedIn(true)): ?>
-    <header id="header">
-      <div class="logo pull-left">
+    <header id="header" style="background-color: #9E9E9E;">
+      <div class="logo pull-left" style="background-color: #9E9E9E;">
        <img src="libs/images/Logo.png" width="300" height="60"/>
       </div>
       <div class="header-content">      
